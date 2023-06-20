@@ -1,0 +1,27 @@
+body{ margin:10px;
+    background-color: #B0E0E6;
+    width: 50%!important;
+    padding: 8px 5px;
+    
+}
+
+tr{
+    font-size: 20px;
+    color: #066a75;
+    padding: 10px 0;
+    font-family: Arial,sans-serif;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 30px;
+  }
+
+  input[type="button"]{
+    font-size: 30px;
+    width: 50%!important;
+    padding: 8px 5px;
+    background: #3d9db3;
+    border: 1px solid #fff;	
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+  }

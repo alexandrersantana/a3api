@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Projeto A3</title>
+        <link rel="stylesheet" href="css/meucss.css">
+        <script src="scripts.js"></script>
+    </head>
+    <body>
+        <h2 class="container">Cadastrar produto</h2>
+        <br>
+        <div class="container"> 
+        <form action="/show" method="POST"> 
+            <p>
+                <label for="id">Nome </label>
+                <input type="text" placeholder="Nome" name="nome"></p>
+            <p>
+                <label for="função">Função </label>
+                <input type="text" placeholder="Função" name="funcao"></p>
+            <p>
+                <label for="paciente">Paciente </label>
+                <input type="text" placeholder="Paciente" name="paciente"></p>
+            <p>
+                <label for="validade">Validade </label>
+                <input type="date" placeholder="Validade" name="validade"></p>
+            <p>
+                <label for="quant">Quantidade </label>
+                <input type="number" placeholder="Quantidade" name="quant"></p>
+
+            <button type="submit"> Cadastrar </button>
+            <button type="button" onclick="voltarPaginaAnterior()">Voltar para a página anterior</button>
+            </div>
+        </form>
+    </body>
+</html>
