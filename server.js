@@ -69,6 +69,10 @@ app.get('/login', (req, res) =>{//READ: ENVIA A INFORMAÇÃO
     res.render('login.ejs')
 })
 
+app.get('/cadastroCnpj', (req, res) =>{ //READ: ENVIA A INFORMAÇÃO
+  res.render('cadastroCnpj.ejs')
+})
+
 
 const Produtos = require('./model/produtos');
 const { ObjectId } = require('mongodb');
