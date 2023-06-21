@@ -9,7 +9,7 @@
 <body>
     <div class="container"> 
         <form action="/atualizaProduto" method="POST" data-form>
-            <input type="text" data-id name="_id">
+            <input type="text" data-id name="_id" hidden>
             
             <p>
                 <label for="nome">Nome </label>
@@ -27,10 +27,13 @@
                 <label for="quant">Quantidade </label>
                 <input type="number" placeholder="Quantidade" data-quant name="quant"></p>
 
-            <button type="submit"> Cadastrar </button>
+            <button type="submit"> Editar </button>
+            <button href="http://localhost:3000/home">Voltar para a página anterior</button>
+
         </form>
     </div>
 
     <script type="module" src="src/atualizar.js"></script>
+    
 </body>
 </html>
