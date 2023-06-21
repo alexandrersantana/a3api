@@ -198,3 +198,7 @@ button style{
       transform: translateX(-20px);
     }
   }
+
+botao-editar{
+  text-decoration: none;
+}

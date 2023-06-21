@@ -34,7 +34,9 @@ function criaLinha(_id, nome, quantidade, validade, funcao, paciente){
                         <td>${quantidade}</td>
                         <td>${validade}</td>
                         <td>
-                            <a href="http://localhost:3000/editar?id=${_id}">Editar</a>
+                            <a href="http://localhost:3000/editar?id=${_id}">
+                            <button>Editar</button>
+                            </a>
                             <button class="btn-deletar" onClick="window.location.reload()">Deletar</button>   
                         </td>`
 
