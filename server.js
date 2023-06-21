@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 const app = express()
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://alexandrersantana:102635@cluster0.hzepzb9.mongodb.net/?retryWrites=true&w=majority";
-//teste de comentário
+//teste de comentário segunda parte
 
 const sessionMiddleware = require('./sessionConfig')
 app.use(sessionMiddleware);
