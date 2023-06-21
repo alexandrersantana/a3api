@@ -7,7 +7,7 @@ const inputNome = document.querySelector('[data-nome]');
 const inputFuncao = document.querySelector('[data-funcao]');
 const inputPaciente = document.querySelector('[data-paciente]');
 const inputValidade = document.querySelector('[data-validade]');
-const inputQuantidade = document.querySelector('[data-quantidade]');
+const inputQuantidade = document.querySelector('[data-quant]');
 const inputId = document.querySelector('[data-id]')
 
 function getProduto(id){
@@ -36,7 +36,7 @@ async function getProdutoInfo(){
         console.log(dados[0]._id);
 
         inputId.value = dados[0]._id
-        inputNome.value = dados[0].inputNome
+        inputNome.value = dados[0].nome
         inputFuncao.value = dados[0].funcao
         inputPaciente.value = dados[0].paciente
         inputValidade.value = dados[0].validade

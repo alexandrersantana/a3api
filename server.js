@@ -100,7 +100,8 @@ app.post('/atualizaProduto', async (req, res) =>{
     console.log(req.body._id);
     const filter = {"_id": ObjectId(req.body._id)}
     await Produtos.findByIdAndUpdate(ObjectId(req.body._id), {$set:{
-        id: req.body.id,
+        id: req.body._id,
+        nome: req.body.nome,
         funcao: req.body.funcao,
         paciente: req.body.paciente,
         validade: req.body.validade,
@@ -111,8 +112,8 @@ app.post('/atualizaProduto', async (req, res) =>{
 })
 
 app.delete('/deletar', (req, res) =>{
-    console.log(req.query.id);
-    db.collection('produtos').deleteOne({"id": req.query.id});
+    console.log(req.query._id);
+    db.collection('produtos').deleteOne({"id": req.query._id});
 })
 
 // Login

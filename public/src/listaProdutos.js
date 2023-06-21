@@ -55,7 +55,7 @@ lista.addEventListener('click', async(evento) => {
             console.log(id);
             await deletar(id);
         }catch(e){
-            console.log(e);
+            console.log("erro ao deletar");
         }
     }
     
