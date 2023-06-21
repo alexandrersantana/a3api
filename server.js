@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 const app = express()
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://alexandrersantana:102635@cluster0.hzepzb9.mongodb.net/?retryWrites=true&w=majority";
-
+//teste de comentário
 
 const sessionMiddleware = require('./sessionConfig')
 app.use(sessionMiddleware);
@@ -120,20 +120,31 @@ app.delete('/deletar', (req, res) =>{
 app.post('/login', (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
-  
+    
     // Verifique se o nome de usuário e a senha estão corretos no banco de dados
-    db.collection('users').findOne({ username: username, password: password }, (err, user) => {
+    db.collection('users').findOne({ username: username, password: password}, (err, user) => {
       if (err) {
         console.log(err);
         res.status(500).json({ error: 'Erro no servidor'});
       } else if (!user) {
         res.status(401).json({ error: 'Nome de usuário ou senha inválidos'});
       } else {
-        // Autentica o cliente para acessar as paginas bloqueadas
-        req.session.authenticated = true
-        //res.json({ message: 'Autenticação bem-sucedida' });
-        // Login bem-sucedido, redirecione o usuário para a página desejada
-        res.redirect('/home');
+        // Autentica o cliente para acessar as páginas bloqueadas
+        req.session.authenticated = true;
+        
+        const userId = user._id;
+        const typeUser = user.typeUser;
+  
+        if (typeUser == true) {
+          // Usuário do tipo A, redirecione para a página A passando o ID do usuário
+          res.redirect(`/listaProdutos?id=${userId}`);
+        } else if (typeUser == false) {
+          // Usuário do tipo B, redirecione para a página B passando o ID do usuário
+          res.redirect(`/home?id=${userId}`);
+        } else {
+          // Tipo de usuário desconhecido, redirecione para uma página de erro ou faça outra ação adequada
+          res.status(400).json({ error: 'Tipo de usuário desconhecido' });
+        }
       }
     });
   });
