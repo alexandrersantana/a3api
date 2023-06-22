@@ -7,7 +7,7 @@ export function listaProdutos(){
             'content-type':'application/json;charset=utf-8'
         }
     }
-
+    // vou bulinar aqui
     return fetch(url, options).then(
         resp => resp.json()
     ).then(
