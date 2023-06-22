@@ -9,7 +9,7 @@
   <form action="/salvarFarmacia" method="POST">
 
     <input type="hidden" name="typeUser" value="farmacia">
-    
+
     <label for="username">Usuario:</label>
     <input type="text" id="username" name="username" required><br><br>
 
@@ -34,9 +34,6 @@
     <label for="numero">Numero:</label>
     <input type="string" id="numero" name="numero" required><br><br>
 
-
-    <!-- O campo oculto acima enviará o valor "false" para o atributo typeUser -->
-    <!-- false para farmacia -->
     <input type="submit" value="Enviar">
   </form>
   <a href="http://localhost:3000/login"><button>Voltar</button></a>
