@@ -2,6 +2,33 @@
 <html>
 <head>
   <title>Cadastro CNPJ</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#cnpj').change(function() {
+        var cnpj = $(this).val();
+
+        $.ajax({
+          url: '/dados?cnpj=' + cnpj,
+          type: 'GET',
+          dataType: 'json',
+          success: function(data) {
+            // Preencha os campos com os dados recebidos da API
+            $('#fantasia').val(data.fantasia);
+            $('#bairro').val(data.bairro);
+            $('#telefone').val(data.telefone);
+            $('#logradouro').val(data.logradouro);
+            $('#numero').val(data.numero);
+          },
+          error: function() {
+            // Lide com erros de requisição
+            alert('Erro ao obter dados do CNPJ.');
+          }
+        });
+      });
+    });
+  </script>
 </head>
 <body>
   <h1>Cadastro de Farmacia</h1>

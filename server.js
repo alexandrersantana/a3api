@@ -27,7 +27,8 @@ MongoClient.connect(uri, (err, client) => {
     db = client.db('test')
     setupRoutesAndStartServer(db)
 })
-// Tem que fazer funcionar essa função para bloquear as outras paginas!! Senão o login fica podi xD
+
+
 function isAuthenticated(req, res, next) {
     // Verificar se o usuário está autenticado
     if (req.session && req.session.authenticated) {
@@ -39,23 +40,28 @@ function isAuthenticated(req, res, next) {
     res.redirect('/login');
   }
 
-  function buscarDados() {
-    const cnpj = '1234567890'; // CNPJ que deseja buscar (pode ser obtido de um campo de formulário, por exemplo)
+function Disconnect(req, res, next) { // precisa fazer funcionar isso também
+  req.session.authenticated = false;
+  req.session = false;
+}
+
+  // function buscarDados() {
+  //   const cnpj = '1234567890'; // CNPJ que deseja buscar (pode ser obtido de um campo de formulário, por exemplo)
   
-    const url = `http://localhost:3000/dados?cnpj=${cnpj}`; // URL do seu endpoint GET
+  //   const url = `http://localhost:3000/dados?cnpj=${cnpj}`; // URL do seu endpoint GET
   
-    fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        // Faça o que for necessário com os dados recebidos
-        console.log(data);
-        // Exiba os dados na página, atualize elementos, etc.
-      })
-      .catch(error => {
-        console.error(error);
-        // Lide com erros, exiba uma mensagem de erro na página, etc.
-      });
-  }
+  //   fetch(url)
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       // Faça o que for necessário com os dados recebidos
+  //       console.log(data);
+  //       // Exiba os dados na página, atualize elementos, etc.
+  //     })
+  //     .catch(error => {
+  //       console.error(error);
+  //       // Lide com erros, exiba uma mensagem de erro na página, etc.
+  //     });
+  // }
   
 
 function setupRoutesAndStartServer(db) {
@@ -73,6 +79,11 @@ app.get('/cadastro', isAuthenticated, (req, res) =>{ //READ: ENVIA A INFORMAÇÃ
 app.get('/listaProdutos', isAuthenticated, (req, res) =>{ //READ: ENVIA A INFORMAÇÃO
     //res.render('index.ejs')
     res.render('listaProdutos.ejs')
+})
+
+app.get('/listaProdutosCliente', isAuthenticated, (req, res) =>{ //READ: ENVIA A INFORMAÇÃO
+  //res.render('index.ejs')
+  res.render('listaProdutosCliente.ejs')
 })
 
 app.get('/editar', isAuthenticated, (req, res) =>{ //READ: ENVIA A INFORMAÇÃO
@@ -94,6 +105,10 @@ app.get('/cadastroCnpj', (req, res) =>{ //READ: ENVIA A INFORMAÇÃO
 
 app.get('/cadastroCliente', (req, res) =>{ //READ: ENVIA A INFORMAÇÃO
   res.render('cadastroCliente.ejs')
+})
+
+app.post('/logout', Disconnect, (req, res) =>{
+  res.redirect('login.ejs')
 })
 
 
@@ -138,6 +153,7 @@ app.get('/dados', (req, res) => {
 
 
 app.post('/show', (req, res) => {
+    //const {userId, ...userData} = req.body;
     db.collection('produtos').insertOne(req.body, (err, result) => {
         if (err) return console.log(err);
         console.log('Salvo com sucesso')
@@ -203,11 +219,11 @@ app.post('/login', (req, res) => {
         
         const userId = user._id;
         const typeUser = user.typeUser;
-  // viado
-  //aqui ó
+
+
         if (typeUser == 'cliente') {
           // Usuário do tipo A, redirecione para a página A passando o ID do usuário
-          res.redirect(`/listaProdutos?id=${userId}`);
+          res.redirect(`/listaProdutosCliente?id=${userId}`);
         } else if (typeUser == 'farmacia') {
           // Usuário do tipo B, redirecione para a página B passando o ID do usuário
           res.redirect(`/home?id=${userId}`);

@@ -7,13 +7,7 @@ export function listaProdutos(){
             'content-type':'application/json;charset=utf-8'
         }
     }
-<<<<<<< HEAD
-    // vou bulinar aqui
-=======
-//TOP TPOTPEOPEADNAOKNC AKNFA OWAKXAPWOCLKNLSDLKSLDKFSEEE
-    //TESTE
 
->>>>>>> 6ad7cb1f4a7f47f897a2b942e7dd9720725f4bfc
     return fetch(url, options).then(
         resp => resp.json()
     ).then(
@@ -36,7 +30,6 @@ function criaLinha(_id, nome, quant, validade, funcao){
     const linha = document.createElement('tr')
     const conteudo = `<td>${nome}</td>
                         <td>${funcao}</td>
-                       
                         <td>${quant}</td>
                         <td>${validade}</td>
                         <td>
@@ -73,7 +66,7 @@ async function render() {
     try{
         const produtos = await listaProdutos()
         produtos.forEach(produto => {
-            lista.appendChild(criaLinha(produto._id, produto.nome, produto.quant, produto.validade, produto.funcao, produto.paciente))
+            lista.appendChild(criaLinha(produto._id, produto.nome, produto.quant, produto.validade, produto.funcao))
         });
     }catch(e){
         console.log(e);

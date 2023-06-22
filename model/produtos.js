@@ -9,15 +9,15 @@ let produtos = mongoose.Schema({
         type: String,
         required: false
     },
-    paciente: {
-        type: String,
-        required: false
-    },
     validade: {
         type: String,
         required: true
     },
     quant: {
+        type: String,
+        required: true
+    },
+    farmaciaId: {
         type: String,
         required: true
     }
