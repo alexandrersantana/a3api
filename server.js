@@ -39,6 +39,25 @@ function isAuthenticated(req, res, next) {
     res.redirect('/login');
   }
 
+  function buscarDados() {
+    const cnpj = '1234567890'; // CNPJ que deseja buscar (pode ser obtido de um campo de formulário, por exemplo)
+  
+    const url = `http://localhost:3000/dados?cnpj=${cnpj}`; // URL do seu endpoint GET
+  
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        // Faça o que for necessário com os dados recebidos
+        console.log(data);
+        // Exiba os dados na página, atualize elementos, etc.
+      })
+      .catch(error => {
+        console.error(error);
+        // Lide com erros, exiba uma mensagem de erro na página, etc.
+      });
+  }
+  
+
 function setupRoutesAndStartServer(db) {
 
 app.get('/home', isAuthenticated, (req, res) =>{ //READ: ENVIA A INFORMAÇÃO
@@ -94,6 +113,26 @@ app.get('/getProduto', (req, res) =>{
         res.json(produtos)
     })
 })
+
+app.get('/dados', (req, res) => {
+  const cnpj = req.query.cnpj; // Obtém o CNPJ do parâmetro da URL ou de onde estiver armazenado
+
+  const url = `https://receitaws.com.br/v1/cnpj/${cnpj}`; // URL da API
+
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      // ...faça o que for necessário com os dados recebidos da API...
+
+      res.json(data); // Responda com os dados recebidos da API
+    })
+    .catch(error => {
+      console.error(error);
+      res.status(500).json({ error: 'Erro ao fazer solicitação à API' });
+    });
+});
+
 
 app.post('/show', (req, res) => {
     db.collection('produtos').insertOne(req.body, (err, result) => {
