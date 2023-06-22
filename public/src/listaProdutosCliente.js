@@ -1,5 +1,5 @@
-export function listaProdutos(){
-    const url = 'http://localhost:3000/produtos';
+export function listaProdutosCliente(){
+    const url = 'http://localhost:3000/produtoscliente';
     const options = {
         method: 'GET',
         mode: 'cors',
@@ -30,7 +30,7 @@ function criaLinha(_id, nome, quantidade, validade, funcao){
     const linha = document.createElement('tr')
     const conteudo = `<td>${nome}</td>
                         <td>${funcao}</td>
-                       
+                         
                         <td>${quantidade}</td>
                         <td>${validade}</td>
                         <td>
