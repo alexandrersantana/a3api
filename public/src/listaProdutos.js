@@ -7,7 +7,13 @@ export function listaProdutos(){
             'content-type':'application/json;charset=utf-8'
         }
     }
+<<<<<<< HEAD
     // vou bulinar aqui
+=======
+//TOP TPOTPEOPEADNAOKNC AKNFA OWAKXAPWOCLKNLSDLKSLDKFSEEE
+    //TESTE
+
+>>>>>>> 6ad7cb1f4a7f47f897a2b942e7dd9720725f4bfc
     return fetch(url, options).then(
         resp => resp.json()
     ).then(
@@ -26,12 +32,12 @@ function deletar(_id){
     })
 }
 
-function criaLinha(_id, nome, quantidade, validade, funcao){
+function criaLinha(_id, nome, quant, validade, funcao){
     const linha = document.createElement('tr')
     const conteudo = `<td>${nome}</td>
                         <td>${funcao}</td>
                        
-                        <td>${quantidade}</td>
+                        <td>${quant}</td>
                         <td>${validade}</td>
                         <td>
                             <a href="http://localhost:3000/editar?id=${_id}">
