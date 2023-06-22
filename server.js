@@ -203,7 +203,8 @@ app.post('/login', (req, res) => {
         
         const userId = user._id;
         const typeUser = user.typeUser;
-  
+  // viado
+  //aqui ó
         if (typeUser == 'cliente') {
           // Usuário do tipo A, redirecione para a página A passando o ID do usuário
           res.redirect(`/listaProdutos?id=${userId}`);
