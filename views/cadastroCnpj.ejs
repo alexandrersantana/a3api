@@ -6,7 +6,10 @@
 <body>
   <h1>Cadastro de Farmacia</h1>
 
-  <form action="/dados" method="GET">
+  <form action="/salvarFarmacia" method="POST">
+
+    <input type="hidden" name="typeUser" value="farmacia">
+    
     <label for="username">Usuario:</label>
     <input type="text" id="username" name="username" required><br><br>
 
@@ -14,23 +17,26 @@
     <input type="password" id="password" name="password" required><br><br>
 
     <label for="cnpj">Cnpj:</label>
-    <input type="text" id="alterar" name="alterar" required><br><br>
+    <input type="text" id="cnpj" name="cnpj" required><br><br>
 
     <label for="fantasia">Nome Fantasia:</label>
-    <input type="text" id="alterar" name="alterar" required><br><br>
+    <input type="text" id="fantasia" name="fantasia" required><br><br>
     
     <label for="bairro">Bairro:</label>
-    <input type="text" id="alterar" name="alterar" required><br><br>
+    <input type="text" id="bairro" name="bairro" required><br><br>
 
     <label for="telefone">Telefone:</label>
-    <input type="text" id="alterar" name="alterar" required><br><br>
+    <input type="text" id="telefone" name="telefone" required><br><br>
 
     <label for="logradouro">Logradouro:</label>
-    <input type="text" id="alterar" name="alterar" required><br><br>
+    <input type="text" id="logradouro" name="logradouro" required><br><br>
 
     <label for="numero">Numero:</label>
-    <input type="string" id="alterar" name="alterar" required><br><br>
+    <input type="string" id="numero" name="numero" required><br><br>
 
+
+    <!-- O campo oculto acima enviará o valor "false" para o atributo typeUser -->
+    <!-- false para farmacia -->
     <input type="submit" value="Enviar">
   </form>
   <a href="http://localhost:3000/login"><button>Voltar</button></a>

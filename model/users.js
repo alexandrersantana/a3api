@@ -7,7 +7,7 @@ let users = mongoose.Schema({
         required: true
     },
     typeUser: {
-        type: Boolean,
+        type: String,
         required: true
     },
     username: {
@@ -21,19 +21,25 @@ let users = mongoose.Schema({
     nome: {
         type: String,
         required: function(){
-            return this.typeUser; // O campo é obrigatório se o typeUser for falso (pessoa juridica)
+            return this.typeUser == 'cliente'; // O campo é obrigatório se o typeUser for cliente (pessoa fisica)
+        }
+    },
+    cpf: {
+        type: String,
+        required: function(){
+            return this.typeUser == 'cliente'; // O campo é obrigatório se o typeUser for cliente (pessoa fisica)
         }
     },
     cnpj: {
         type: String,
         required: function(){
-            return !this.typeUser; // O campo é obrigatório se o typeUser for falso (pessoa juridica)
+            return this.typeUser == 'farmacia'; // O campo é obrigatório se o typeUser for falso (pessoa juridica)
         }
     },
     fantasia: {
         type: String,
         required: function(){
-            return !this.typeUser; // O campo é obrigatório se o typeUser for falso (pessoa juridica)
+            return this.typeUser == 'farmacia'; // O campo é obrigatório se o typeUser for falso (pessoa juridica)
         }
     },
     bairro: {

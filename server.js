@@ -98,7 +98,10 @@ app.get('/cadastroCliente', (req, res) =>{ //READ: ENVIA A INFORMAÇÃO
 
 
 const Produtos = require('./model/produtos');
+const Usuario = require('./model/users');
 const { ObjectId } = require('mongodb');
+
+
 
 app.get('/produtos', (req, res) =>{
     let listaProdutos = Produtos.find({}, function(err, produtos){
@@ -143,6 +146,24 @@ app.post('/show', (req, res) => {
     
 })
 
+app.post('/salvarFarmacia', (req, res) => {
+  db.collection('users').insertOne(req.body, (err, result) => {
+      if (err) return console.log(err);
+      console.log('Salvo com sucesso')
+      res.redirect("/home")
+  })
+  
+})
+
+app.post('/salvarCliente', (req, res) => {
+  db.collection('users').insertOne(req.body, (err, result) => {
+      if (err) return console.log(err);
+      console.log('Salvo com sucesso')
+      res.redirect("/home")
+  })
+  
+})
+
 app.post('/atualizaProduto', async (req, res) =>{
     console.log(req.body._id);
     const filter = {"_id": ObjectId(req.body._id)}
@@ -183,10 +204,10 @@ app.post('/login', (req, res) => {
         const userId = user._id;
         const typeUser = user.typeUser;
   
-        if (typeUser == true) {
+        if (typeUser == 'cliente') {
           // Usuário do tipo A, redirecione para a página A passando o ID do usuário
           res.redirect(`/listaProdutos?id=${userId}`);
-        } else if (typeUser == false) {
+        } else if (typeUser == 'farmacia') {
           // Usuário do tipo B, redirecione para a página B passando o ID do usuário
           res.redirect(`/home?id=${userId}`);
         } else {
