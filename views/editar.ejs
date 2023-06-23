@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/editar.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Editar</title>
 </head>
 <body>
     <div class="container"> 
@@ -17,9 +17,7 @@
             <p>
                 <label for="função">Função </label>
                 <input type="text" placeholder="Função" data-funcao name="funcao"></p>
-            <!-- <p>
-                <label for="paciente">Paciente </label>
-                <input type="text" placeholder="Paciente" data-paciente name="paciente"></p> -->
+
             <p>
                 <label for="validade">Validade </label>
                 <input type="date" placeholder="Validade" data-validade name="validade"></p>
@@ -28,8 +26,9 @@
                 <input type="number" placeholder="Quantidade" data-quant name="quant"></p>
 
             <button type="submit"> Cadastrar </button>
-            <button href="http://localhost:3000/home">Voltar para a página anterior</button>
-
+            <a href="http://localhost:3000/listaProdutos">
+                <button type="button">Voltar para a página anterior</button>
+            </a>
         </form>
     </div>
 

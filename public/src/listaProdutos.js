@@ -26,12 +26,11 @@ function deletar(_id){
     })
 }
 
-function criaLinha(_id, nome, quantidade, validade, funcao){
+function criaLinha(_id, nome, quant, validade, funcao){
     const linha = document.createElement('tr')
     const conteudo = `<td>${nome}</td>
                         <td>${funcao}</td>
-                       
-                        <td>${quantidade}</td>
+                        <td>${quant}</td>
                         <td>${validade}</td>
                         <td>
                             <a href="http://localhost:3000/editar?id=${_id}">
@@ -67,7 +66,7 @@ async function render() {
     try{
         const produtos = await listaProdutos()
         produtos.forEach(produto => {
-            lista.appendChild(criaLinha(produto._id, produto.nome, produto.quant, produto.validade, produto.funcao, produto.paciente))
+            lista.appendChild(criaLinha(produto._id, produto.nome, produto.quant, produto.validade, produto.funcao))
         });
     }catch(e){
         console.log(e);

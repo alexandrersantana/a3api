@@ -2,45 +2,87 @@
 <html>
 <head>
   <title>Cadastro CNPJ</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#cnpj').change(function() {
+        var cnpj = $(this).val();
+
+        $.ajax({
+          url: '/dados?cnpj=' + cnpj,
+          type: 'GET',
+          dataType: 'json',
+          success: function(data) {
+            // Preencha os campos com os dados recebidos da API
+            $('#fantasia').val(data.fantasia);
+            $('#bairro').val(data.bairro);
+            $('#telefone').val(data.telefone);
+            $('#logradouro').val(data.logradouro);
+            $('#numero').val(data.numero);
+          },
+          error: function() {
+            // Lide com erros de requisição
+            alert('Erro ao obter dados do CNPJ.');
+          }
+        });
+      });
+    });
+  </script>
 </head>
 <body>
   <h1>Cadastro de Farmacia</h1>
-
-  <form action="/salvarFarmacia" method="POST">
-
+  
+  <form class="row g-3" action="/salvarFarmacia" method="POST">
     <input type="hidden" name="typeUser" value="farmacia">
-    
-    <label for="username">Usuario:</label>
-    <input type="text" id="username" name="username" required><br><br>
-
-    <label for="password">Senha:</label>
-    <input type="password" id="password" name="password" required><br><br>
-
-    <label for="cnpj">Cnpj:</label>
-    <input type="text" id="cnpj" name="cnpj" required><br><br>
-
-    <label for="fantasia">Nome Fantasia:</label>
-    <input type="text" id="fantasia" name="fantasia" required><br><br>
-    
-    <label for="bairro">Bairro:</label>
-    <input type="text" id="bairro" name="bairro" required><br><br>
-
-    <label for="telefone">Telefone:</label>
-    <input type="text" id="telefone" name="telefone" required><br><br>
-
-    <label for="logradouro">Logradouro:</label>
-    <input type="text" id="logradouro" name="logradouro" required><br><br>
-
-    <label for="numero">Numero:</label>
-    <input type="string" id="numero" name="numero" required><br><br>
-
-
-    <!-- O campo oculto acima enviará o valor "false" para o atributo typeUser -->
-    <!-- false para farmacia -->
-    <input type="submit" value="Enviar">
+    <div class="col-md-3">
+      <label for="username" class="form-label">Username</label>
+      <input type="text" class="form-control" id="username" name="username" required>
+    </div>
+    <div class="col-md-3">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" class="form-control" id="password" name="password" required>
+    </div>
+    <div class="row g-2">
+    <div class="col-3">
+      <label for="cnpj" class="form-label">CNPJ</label>
+      <input type="text" class="form-control" id="cnpj" name="cnpj" required>
+    </div>
+    <div class="col-md-2">
+      <label for="fantasia" class="form-label">Nome Fantasia</label>
+      <input type="text" class="form-control" id="fantasia" name="fantasia" required>
+    </div>
+    </div>
+    <div class="col-md-3">
+      <label for="logradouro" class="form-label">Logradouro</label>
+      <input type="text" class="form-control" id="logradouro" name="logradouro" required>
+    </div>
+    <div class="col-md-1">
+      <label for="numero" class="form-label">Numero</label>
+      <input type="text" class="form-control" id="numero" name="numero" required>
+    </div>
+    <div class="col-md-2">
+      <label for="bairro" class="form-label">Bairro</label>
+      <input type="text" class="form-control" id="bairro" name="bairro" required>
+    </div>
+    <div class="col-2">
+      <label for="telefone" class="form-label">Telefone</label>
+      <input type="text" class="form-control" id="telefone" name="telefone" required>
+      </div>
+    </div>
+    <div class="row g-3">
+    <div class="col-sm-1">
+      <button type="submit" class="btn btn-primary">Cadastrar</button>
+    </div>
+  </div>
   </form>
-  <a href="http://localhost:3000/login"><button>Voltar</button></a>
+  <div class="col-sm-1">
+    <a href="http://localhost:3000/login"><button class="btn btn-primary">Voltar</button></a>
+  </div>
 
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 </html>

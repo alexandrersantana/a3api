@@ -5,11 +5,11 @@ let produtos = mongoose.Schema({
         type: String,
         required: true
     },
+    // nome: {
+    //     type: String,
+    //     required: true
+    // },
     funcao: {
-        type: String,
-        required: false
-    },
-    paciente: {
         type: String,
         required: false
     },
@@ -18,6 +18,10 @@ let produtos = mongoose.Schema({
         required: true
     },
     quant: {
+        type: String,
+        required: true
+    },
+    userId: {
         type: String,
         required: true
     }

@@ -30,7 +30,7 @@ function getProduto(id){
     )
 }
 
-async function getProdutoInfo(){
+async function getProdutoInfo(){ //retornar valores 
     try{
         const dados = await getProduto(id).then(result => result)
         console.log(dados[0]._id);
