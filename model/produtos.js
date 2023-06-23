@@ -5,6 +5,10 @@ let produtos = mongoose.Schema({
         type: String,
         required: true
     },
+    // nome: {
+    //     type: String,
+    //     required: true
+    // },
     funcao: {
         type: String,
         required: false
@@ -17,7 +21,7 @@ let produtos = mongoose.Schema({
         type: String,
         required: true
     },
-    farmaciaId: {
+    userId: {
         type: String,
         required: true
     }

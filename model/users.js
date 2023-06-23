@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-let users = mongoose.Schema({
+let users = mongoose.Schema({//usado para gerar objetos de cadastro no bd
     
     id: {
         type: String,
